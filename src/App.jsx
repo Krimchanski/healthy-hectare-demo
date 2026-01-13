@@ -1,37 +1,22 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Navbar from "./components/sections/Navbar";
-import Hero from "./components/sections/Hero";
-import ProgrammeContext from "./components/sections/ProgrammeContext";
-import ProgrammeDefinition from "./components/sections/ProgrammeDefinition";
-import HowItWorks from "./components/sections/HowItWorks";
-import Footprint from "./components/sections/Footprint";
-import ExpertPanel from "./components/sections/ExpertPanel";
-import GovernanceFramework from "./components/sections/GovernanceFramework";
-import Impact from "./components/sections/Impact";
-import Partners from "./components/sections/Partners";
-import Participate from "./components/sections/Participate";
-import Regulatory from "./components/sections/Regulatory";
-import Closing from "./components/sections/Closing";
-import Footer from "./components/sections/Footer";
+import Home from "./pages/Home";
+import Programme from "./pages/Programme";
+import Research from "./pages/Research";
+import Participate from "./pages/Participate";
+import ParticipateFarm from "./pages/ParticipateFarm";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      <Hero />
-      <ProgrammeContext />
-      <ProgrammeDefinition />
-      <HowItWorks />
-      <Footprint />
-      <ExpertPanel />
-      <GovernanceFramework />
-      <Impact />
-      <Partners />
-      <Participate />
-      <Regulatory />
-      <Closing />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/programme" element={<Programme />} />
+        <Route path="/research" element={<Research />} />
+        <Route path="/participate" element={<Participate />} />
+        <Route path="/participate/farm" element={<ParticipateFarm />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
