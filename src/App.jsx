@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="min-h-screen bg-white text-neutral-950">
+      {/* Header */}
+      <header className="border-b border-neutral-200">
+        <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+          <div className="text-xl font-semibold tracking-tight">
+            Healthy Hectare
+          </div>
+          <nav className="flex items-center gap-6 text-sm font-medium">
+            <a href="#" className="hover:text-neutral-600">Programme</a>
+            <a href="#" className="hover:text-neutral-600">Research</a>
+            <a href="#" className="hover:text-neutral-600">Partners</a>
+            <a href="#" className="hover:text-neutral-600">Apply</a>
+          </nav>
+        </div>
+      </header>
 
-export default App
+      {/* Hero */}
+      <main>
+        <section className="border-b border-neutral-200">
+          <div className="mx-auto max-w-7xl px-6 py-24">
+            <div className="max-w-3xl">
+              <h1 className="text-5xl font-semibold tracking-tight leading-tight">
+                The Healthy Hectare Challenge
+              </h1>
+
+              <p className="mt-6 text-lg text-neutral-600 leading-relaxed">
+                A research-grade transition programme for farms moving away from
+                hazardous pesticides — designed for regulators, scientists,
+                funders, and serious agricultural operators.
+              </p>
+
+              <div className="mt-10 flex gap-4">
+                <a
+                  href="#"
+                  className="inline-flex items-center justify-center rounded-md bg-black px-6 py-3 text-sm font-medium text-white hover:bg-neutral-800"
+                >
+                  Apply as a Farm
+                </a>
+
+                <a
+                  href="#"
+                  className="inline-flex items-center justify-center rounded-md border border-neutral-300 px-6 py-3 text-sm font-medium hover:bg-neutral-50"
+                >
+                  Partner or Fund
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}
