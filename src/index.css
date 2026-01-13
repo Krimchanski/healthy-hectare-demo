@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 html,
 body {
@@ -9,9 +6,13 @@ body {
 }
 
 body {
-  @apply bg-white text-neutral-950 antialiased;
+  background: white;
+  color: #0a0a0a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  @apply bg-neutral-900 text-white;
+  background: #171717;
+  color: white;
 }
