@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
@@ -15,10 +15,40 @@ export default function Navbar() {
     const [open, setOpen] = useState(false);
     const location = useLocation();
 
-    // Close mobile menu on route change
-    React.useEffect(() => {
+    // Close mobile menu on route/hash change
+    useEffect(() => {
         setOpen(false);
     }, [location.pathname, location.hash]);
+
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (!open) return;
+        const prev = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = prev;
+        };
+    }, [open]);
+
+    // Escape closes mobile menu
+    useEffect(() => {
+        if (!open) return;
+        const onKeyDown = (e) => {
+            if (e.key === "Escape") setOpen(false);
+        };
+        window.addEventListener("keydown", onKeyDown);
+        return () => window.removeEventListener("keydown", onKeyDown);
+    }, [open]);
+
+    const onHome = location.pathname === "/";
+    const activeHash = onHome ? location.hash : "";
+
+    // Define "active" for hash links on Home
+    const hashLinkClass = (hash) =>
+        cx(navItemBase, onHome && activeHash === hash && navItemActive);
+
+    const mobileItemClass = (isActive) =>
+        cx("py-2 border-b border-neutral-200", navItemBase, isActive && navItemActive);
 
     return (
         <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b border-neutral-200">
@@ -33,7 +63,7 @@ export default function Navbar() {
                     </Link>
 
                     {/* Desktop nav */}
-                    <nav className="hidden lg:flex items-center gap-8 justify-center">
+                    <nav className="hidden lg:flex items-center gap-8 justify-center" aria-label="Primary">
                         <NavLink
                             to="/"
                             end
@@ -43,37 +73,39 @@ export default function Navbar() {
                         </NavLink>
 
                         {/* Home section links (hash) */}
-                        <Link to="/#programme" className={navItemBase}>
+                        <Link to="/#programme" className={hashLinkClass("#programme")}>
                             Programme
                         </Link>
-                        <Link to="/#how-it-works" className={navItemBase}>
+                        <Link to="/#how-it-works" className={hashLinkClass("#how-it-works")}>
                             How it works
                         </Link>
-                        <Link to="/#impact" className={navItemBase}>
+                        <Link to="/#impact" className={hashLinkClass("#impact")}>
                             Impact
                         </Link>
-                        <Link to="/#governance" className={navItemBase}>
+                        <Link to="/#governance" className={hashLinkClass("#governance")}>
                             Governance
                         </Link>
 
+                        {/* Platform pages */}
                         <NavLink
-                            to="/participate/farm"
+                            to="/research"
                             className={({ isActive }) => cx(navItemBase, isActive && navItemActive)}
                         >
-                            Farms
+                            Research
                         </NavLink>
+
                         <NavLink
-                            to="/participate/funder"
+                            to="/participate"
                             className={({ isActive }) => cx(navItemBase, isActive && navItemActive)}
                         >
-                            Funders
+                            Participate
                         </NavLink>
                     </nav>
 
                     {/* Desktop CTA */}
                     <div className="hidden lg:flex justify-end">
                         <NavLink
-                            to="/participate/funder"
+                            to="/participate"
                             className={({ isActive }) =>
                                 cx(
                                     "inline-flex items-center h-9 px-4 border text-sm tracking-wide transition-colors",
@@ -94,6 +126,8 @@ export default function Navbar() {
                             onClick={() => setOpen((v) => !v)}
                             className="h-10 w-10 inline-flex items-center justify-center border border-neutral-300 text-neutral-950"
                             aria-label="Toggle menu"
+                            aria-expanded={open}
+                            aria-controls="mobile-menu"
                         >
                             {open ? <X size={18} /> : <Menu size={18} />}
                         </button>
@@ -102,66 +136,63 @@ export default function Navbar() {
 
                 {/* Mobile menu */}
                 {open && (
-                    <div className="lg:hidden pb-6">
-                        <div className="pt-3 grid gap-3">
-                            <NavLink
-                                to="/"
-                                end
-                                className={({ isActive }) =>
-                                    cx(
-                                        "py-2 border-b border-neutral-200",
-                                        navItemBase,
-                                        isActive && navItemActive
-                                    )
-                                }
-                            >
-                                Overview
-                            </NavLink>
+                    <>
+                        {/* Overlay */}
+                        <button
+                            type="button"
+                            className="lg:hidden fixed inset-0 z-40 bg-black/20"
+                            aria-label="Close menu"
+                            onClick={() => setOpen(false)}
+                        />
+                        <div
+                            id="mobile-menu"
+                            className="lg:hidden fixed left-0 right-0 top-16 z-50 bg-white border-b border-neutral-200"
+                            role="dialog"
+                            aria-modal="true"
+                        >
+                            <div className="max-w-7xl mx-auto px-6 py-4">
+                                <div className="grid gap-3">
+                                    <NavLink to="/" end className={({ isActive }) => mobileItemClass(isActive)}>
+                                        Overview
+                                    </NavLink>
 
-                            <Link to="/#programme" className={cx("py-2 border-b border-neutral-200", navItemBase)}>
-                                Programme
-                            </Link>
-                            <Link
-                                to="/#how-it-works"
-                                className={cx("py-2 border-b border-neutral-200", navItemBase)}
-                            >
-                                How it works
-                            </Link>
-                            <Link to="/#impact" className={cx("py-2 border-b border-neutral-200", navItemBase)}>
-                                Impact
-                            </Link>
-                            <Link
-                                to="/#governance"
-                                className={cx("py-2 border-b border-neutral-200", navItemBase)}
-                            >
-                                Governance
-                            </Link>
+                                    <Link to="/#programme" className={cx("py-2 border-b border-neutral-200", hashLinkClass("#programme"))}>
+                                        Programme
+                                    </Link>
+                                    <Link
+                                        to="/#how-it-works"
+                                        className={cx("py-2 border-b border-neutral-200", hashLinkClass("#how-it-works"))}
+                                    >
+                                        How it works
+                                    </Link>
+                                    <Link to="/#impact" className={cx("py-2 border-b border-neutral-200", hashLinkClass("#impact"))}>
+                                        Impact
+                                    </Link>
+                                    <Link
+                                        to="/#governance"
+                                        className={cx("py-2 border-b border-neutral-200", hashLinkClass("#governance"))}
+                                    >
+                                        Governance
+                                    </Link>
 
-                            <NavLink
-                                to="/participate/farm"
-                                className={({ isActive }) =>
-                                    cx("py-2 border-b border-neutral-200", navItemBase, isActive && navItemActive)
-                                }
-                            >
-                                Farms
-                            </NavLink>
-                            <NavLink
-                                to="/participate/funder"
-                                className={({ isActive }) =>
-                                    cx("py-2 border-b border-neutral-200", navItemBase, isActive && navItemActive)
-                                }
-                            >
-                                Funders
-                            </NavLink>
+                                    <NavLink to="/research" className={({ isActive }) => mobileItemClass(isActive)}>
+                                        Research
+                                    </NavLink>
 
-                            <NavLink
-                                to="/participate/funder"
-                                className="mt-2 inline-flex items-center justify-center h-10 px-4 border border-neutral-950 bg-neutral-950 text-white text-sm tracking-wide"
-                            >
-                                Participate
-                            </NavLink>
+                                    <NavLink to="/participate" className={({ isActive }) => mobileItemClass(isActive)}>
+                                        Participate
+                                    </NavLink>
+
+                                    <NavLink
+                                        to="/participate"
+                                        className="mt-2 inline-flex items-center justify-center h-10 px-4 border border-neutral-950 bg-neutral-950 text-white text-sm tracking-wide"
+                                    >
+                                        Participate
+                                    </NavLink>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </>
                 )}
             </div>
         </header>
