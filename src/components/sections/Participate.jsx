@@ -1,5 +1,6 @@
 import React from "react";
 import Section from "../layout/Section";
+import { Link } from "react-router-dom";
 
 export default function Participate() {
     return (
@@ -33,10 +34,16 @@ export default function Participate() {
                             </div>
                         </div>
                     </div>
-                    <button className="w-full bg-gray-900 text-white px-6 py-4 text-sm hover:bg-gray-800 transition">
+
+                    <Link
+                        to="/participate/farm"
+                        className="w-full bg-gray-900 text-white px-6 py-4 text-sm hover:bg-gray-800 transition text-center inline-block"
+                    >
                         Register Your Farm →
-                    </button>
+                    </Link>
+
                 </div>
+
 
                 <div className="bg-white p-12 border border-gray-200">
                     <h4 className="text-2xl font-light text-gray-900 mb-6">
@@ -62,9 +69,12 @@ export default function Participate() {
                             </div>
                         </div>
                     </div>
-                    <button className="w-full bg-gray-900 text-white px-6 py-4 text-sm hover:bg-gray-800 transition">
+                    <Link
+                        to="/participate/funder"
+                        className="w-full bg-gray-900 text-white px-6 py-4 text-sm hover:bg-gray-800 transition text-center inline-block"
+                    >
                         Partner with the Programme →
-                    </button>
+                    </Link>
                 </div>
             </div>
         </Section>

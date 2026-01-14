@@ -1,13 +1,9 @@
 import React from "react";
-import Navbar from "../components/sections/Navbar";
-import Footer from "../components/sections/Footer";
 
 export default function ParticipateFunder() {
     return (
         <div className="min-h-screen bg-white">
-            <Navbar />
-
-            <main className="pt-24 px-6">
+            <main className="px-6">
                 <div className="max-w-3xl mx-auto py-20">
                     <h1 className="text-5xl font-light text-gray-900 mb-6">
                         Partner as a Funder
@@ -21,6 +17,7 @@ export default function ParticipateFunder() {
                     <form
                         name="healthy-hectare-funder"
                         method="POST"
+                        action="/thank-you"
                         data-netlify="true"
                         netlify-honeypot="bot-field"
                         className="space-y-6 border border-gray-200 p-10"
@@ -110,8 +107,6 @@ export default function ParticipateFunder() {
                     </p>
                 </div>
             </main>
-
-            <Footer />
         </div>
     );
 }

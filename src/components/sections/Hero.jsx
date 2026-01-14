@@ -1,25 +1,29 @@
 import React from "react";
 import { Globe } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
     return (
         <section className="pt-24 pb-16 px-6 bg-white">
             <div className="max-w-7xl mx-auto">
                 <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[85vh]">
+                    {/* LEFT COLUMN — TEXT */}
                     <div>
                         <h1 className="text-6xl font-light text-gray-900 leading-[1.1] mb-8 tracking-tight">
                             Healthy Hectare
                         </h1>
+
                         <p className="text-2xl text-gray-900 font-light mb-6 leading-relaxed">
                             A global agricultural transition challenge
                         </p>
+
                         <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-xl">
-                            A science-led programme helping farms reduce hazardous pesticide
-                            use while protecting yields, livelihoods, and food security.
+                            A science-led programme helping farms reduce hazardous pesticide use
+                            while protecting yields, livelihoods, and food security.
                         </p>
+
                         <p className="text-sm text-gray-500 mb-10">
-                            Designed with researchers, agronomists, toxicologists and
-                            policymakers.
+                            Designed with researchers, agronomists, toxicologists and policymakers.
                         </p>
 
                         <div className="flex flex-wrap gap-8 mb-10 text-xs font-medium text-gray-600">
@@ -33,16 +37,25 @@ export default function Hero() {
                             )}
                         </div>
 
+                        {/* CTA BUTTONS */}
                         <div className="flex gap-4">
-                            <button className="bg-gray-900 text-white px-6 py-3 text-sm hover:bg-gray-800 transition">
+                            <Link
+                                to="/participate/funder"
+                                className="bg-gray-900 text-white px-6 py-3 text-sm hover:bg-gray-800 transition inline-block"
+                            >
                                 Become a Partner →
-                            </button>
-                            <button className="border border-gray-300 text-gray-900 px-6 py-3 text-sm hover:bg-gray-50 transition">
-                                Register a Farm
-                            </button>
+                            </Link>
+
+                            <Link
+                                to="/participate/farm"
+                                className="border border-gray-300 text-gray-900 px-6 py-3 text-sm hover:bg-gray-50 transition inline-block"
+                            >
+                                Register a Farm →
+                            </Link>
                         </div>
                     </div>
 
+                    {/* RIGHT COLUMN — VISUAL */}
                     <div className="relative">
                         <div className="aspect-[4/5] bg-gradient-to-br from-green-50 to-emerald-100 rounded-sm relative overflow-hidden">
                             <div className="absolute inset-0 flex items-center justify-center">
