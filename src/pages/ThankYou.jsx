@@ -26,8 +26,10 @@ export default function ThankYou() {
                     </Link>
                 </div>
 
-                <p className="text-xs text-neutral-500 mt-12">
-                    Demo note: this is a prototype intake flow for the Healthy Hectare programme.
+                <p className="text-xs text-neutral-500 mt-12 leading-relaxed">
+                    Submissions are reviewed against Phase I eligibility and verification criteria.
+                    Information is handled in accordance with programme data governance and is used
+                    only for participation assessment and coordination.
                 </p>
             </div>
         </PageShell>
