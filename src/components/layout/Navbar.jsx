@@ -109,7 +109,7 @@ export default function Navbar() {
                                     )
                                 }
                             >
-                                Participate
+                                Apply
                             </NavLink>
                         </div>
 
