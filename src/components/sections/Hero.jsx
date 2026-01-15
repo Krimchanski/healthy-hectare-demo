@@ -14,20 +14,21 @@ export default function Hero() {
                         </h1>
 
                         <p className="text-2xl text-gray-900 font-light mb-6 leading-relaxed">
-                            A global agricultural transition challenge
+                            A verification-ready agricultural transition programme
                         </p>
 
                         <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-xl">
-                            A science-led programme helping farms reduce hazardous pesticide use
-                            while protecting yields, livelihoods, and food security.
+                            A science-led programme infrastructure supporting hazardous pesticide reduction
+                            while protecting yields, livelihoods, and food security — with methods designed
+                            for traceability, review, and regulatory use.
                         </p>
 
                         <p className="text-sm text-gray-500 mb-10">
-                            Designed with researchers, agronomists, toxicologists and policymakers.
+                            Developed with researchers, agronomists, toxicologists, and policy stakeholders.
                         </p>
 
                         <div className="flex flex-wrap gap-8 mb-10 text-xs font-medium text-gray-600">
-                            {["Expert-led", "Field-tested", "Regulator-aligned", "Data-driven"].map(
+                            {["Expert-led", "Field-implementable", "Regulator-aligned", "Audit-ready data"].map(
                                 (t) => (
                                     <div key={t} className="flex items-center gap-2">
                                         <div className="w-1.5 h-1.5 bg-gray-900 rounded-full"></div>
@@ -40,17 +41,10 @@ export default function Hero() {
                         {/* CTA BUTTONS */}
                         <div className="flex gap-4">
                             <Link
-                                to="/participate/funder"
+                                to="/participate"
                                 className="bg-gray-900 text-white px-6 py-3 text-sm hover:bg-gray-800 transition inline-block"
                             >
-                                Become a Partner →
-                            </Link>
-
-                            <Link
-                                to="/participate/farm"
-                                className="border border-gray-300 text-gray-900 px-6 py-3 text-sm hover:bg-gray-50 transition inline-block"
-                            >
-                                Register a Farm →
+                                Apply →
                             </Link>
                         </div>
                     </div>
@@ -63,13 +57,13 @@ export default function Hero() {
                             </div>
 
                             <div className="absolute top-8 right-8 bg-white p-6 rounded-sm shadow-lg border border-gray-100 max-w-xs">
-                                <div className="text-4xl font-light text-gray-900 mb-1">6</div>
-                                <div className="text-sm text-gray-600">Active Countries</div>
+                                <div className="text-sm font-medium text-gray-900 mb-1">Phase I</div>
+                                <div className="text-sm text-gray-600">Pilot cohort intake</div>
                             </div>
 
                             <div className="absolute bottom-8 left-8 bg-white p-6 rounded-sm shadow-lg border border-gray-100 max-w-xs">
-                                <div className="text-4xl font-light text-gray-900 mb-1">2,847</div>
-                                <div className="text-sm text-gray-600">Hectares Under Transition</div>
+                                <div className="text-sm font-medium text-gray-900 mb-1">Verification-first</div>
+                                <div className="text-sm text-gray-600">Methods and governance aligned</div>
                             </div>
                         </div>
                     </div>
