@@ -8,21 +8,13 @@ export default function Closing() {
                 <p className="text-3xl font-light leading-relaxed mb-12">
                     Healthy Hectare is building the infrastructure for the next generation of agriculture. A system that protects farmers, ecosystems, and public health — without compromising food security.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link
-                        to="/participate/farm"
-                        className="bg-white text-gray-900 px-8 py-4 text-sm hover:bg-gray-100 transition inline-block"
-                    >
-                        Join the Programme →
-                    </Link>
 
-                    <Link
-                        to="/participate/funder"
-                        className="border border-white text-white px-8 py-4 text-sm hover:bg-white/10 transition inline-block"
-                    >
-                        Become a Partner →
-                    </Link>
-                </div>
+                <Link
+                    to="/participate"
+                    className="bg-white text-gray-900 px-8 py-4 text-sm hover:bg-gray-100 transition inline-block"
+                >
+                    Join Us →
+                </Link>
             </div>
         </section>
     );
