@@ -113,8 +113,10 @@ export default function ParticipateResearch() {
                         </button>
                     </form>
 
-                    <p className="text-xs text-gray-500 mt-6">
-                        Demo onboarding form. Submitted data is used for intake-flow testing.
+                    <p className="text-xs text-gray-500 mt-6 leading-relaxed">
+                        Phase I research partner intake: submissions are reviewed for methodological
+                        alignment, verification requirements, and pilot scope. Information is used
+                        only to coordinate collaboration discussions and next steps.
                     </p>
                 </div>
             </main>
