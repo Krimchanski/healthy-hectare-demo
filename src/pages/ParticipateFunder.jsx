@@ -102,8 +102,10 @@ export default function ParticipateFunder() {
                         </button>
                     </form>
 
-                    <p className="text-xs text-gray-500 mt-6">
-                        Demo onboarding form. Submitted data is used for intake-flow testing.
+                    <p className="text-xs text-gray-500 mt-6 leading-relaxed">
+                        Phase I partner intake: submissions are reviewed to align priorities,
+                        verification requirements, and deployment scope. Information is used only
+                        to coordinate partnership discussions and next steps.
                     </p>
                 </div>
             </main>

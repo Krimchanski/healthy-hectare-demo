@@ -101,9 +101,9 @@ export default function ParticipateFarm() {
                         </button>
                     </form>
 
-                    <p className="text-xs text-gray-500 mt-6">
-                        This is a demo onboarding form. Submitted data is used for programme
-                        intake testing.
+                    <p className="text-xs text-gray-500 mt-6 leading-relaxed">
+                        Phase I pilot intake: submissions are reviewed for eligibility and cohort fit.
+                        Information is used only to assess participation and coordinate next steps.
                     </p>
                 </div>
             </main>
