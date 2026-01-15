@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Closing() {
     return (
@@ -8,12 +9,19 @@ export default function Closing() {
                     Healthy Hectare is building the infrastructure for the next generation of agriculture. A system that protects farmers, ecosystems, and public health — without compromising food security.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button className="bg-white text-gray-900 px-8 py-4 text-sm hover:bg-gray-100 transition">
+                    <Link
+                        to="/participate/farm"
+                        className="bg-white text-gray-900 px-8 py-4 text-sm hover:bg-gray-100 transition inline-block"
+                    >
                         Join the Programme →
-                    </button>
-                    <button className="border border-white text-white px-8 py-4 text-sm hover:bg-white/10 transition">
+                    </Link>
+
+                    <Link
+                        to="/participate/funder"
+                        className="border border-white text-white px-8 py-4 text-sm hover:bg-white/10 transition inline-block"
+                    >
                         Become a Partner →
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>
