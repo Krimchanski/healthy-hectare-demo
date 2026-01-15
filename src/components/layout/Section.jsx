@@ -27,7 +27,7 @@ export default function Section({
                             </h3>
                         )}
                         {subtitle && (
-                            <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
+                            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
                                 {subtitle}
                             </p>
                         )}
